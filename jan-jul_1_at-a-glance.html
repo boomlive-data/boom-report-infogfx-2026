@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jan–Jul 2026 at a glance</title><style>
+:root{--bg:#fcfcfb;--fg:#0b0b0b;--fg2:#52514e;--line:#e6e5e1;--tile:#ffffff;--c1:#2a78d6;--c2:#eb6834;--grey:#a9a8a2;
+--r1:#9ec5f4;--r2:#6da7ec;--r3:#3987e5;--r4:#256abf;--r5:#184f95;--r6:#0d366b;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a19;--fg:#f0efec;--fg2:#c3c2b7;--line:#34342f;--tile:#222221;--c1:#3987e5;--c2:#d95926;--grey:#6b6a65;
+--r1:#1c5cab;--r2:#256abf;--r3:#2a78d6;--r4:#5598e7;--r5:#86b6ef;--r6:#b7d3f6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a1a19;--fg:#f0efec;--fg2:#c3c2b7;--line:#34342f;--tile:#222221;--c1:#3987e5;--c2:#d95926;--grey:#6b6a65;
+--r1:#1c5cab;--r2:#256abf;--r3:#2a78d6;--r4:#5598e7;--r5:#86b6ef;--r6:#b7d3f6;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--fg);line-height:1.35;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 14px}
+.kicker{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2);font-weight:600}
+h1{font-size:22px;line-height:1.2;margin:4px 0 6px;font-weight:700}
+.sub{font-size:14px;color:var(--fg2);margin:0 0 14px}
+h2{font-size:13px;margin:22px 0 4px;font-weight:700}
+h2 small{font-weight:400;color:var(--fg2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px;margin:0 0 4px}
+.tile{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--tile)}
+.tile b{display:block;font-size:clamp(19px,5.4vw,26px);overflow-wrap:anywhere;line-height:1.1;font-weight:700;font-variant-numeric:tabular-nums}
+.tile span{display:block;font-size:12px;color:var(--fg2);margin-top:3px}
+.row{display:grid;grid-template-columns:minmax(110px,31%) 1fr;gap:10px;align-items:center;margin:5px 0;font-size:13px}
+.row .lab small{color:var(--fg2);font-size:11.5px;display:block}
+.trk{display:flex;align-items:center;min-width:0}
+.bw{flex:1;min-width:0;display:flex;align-items:center}
+.bar{height:14px;border-radius:0 4px 4px 0;min-width:2px;flex:none;transition:opacity .15s}
+.bar.thin{height:10px;margin:1.5px 0}
+.bar:hover,.seg:hover,.col:hover i{opacity:.78}
+.val{font-size:12.5px;margin-left:7px;white-space:nowrap;font-variant-numeric:tabular-nums;flex:none}
+.val i{font-style:normal;color:var(--fg2)}
+.pv{display:flex;align-items:center;height:13px}
+.pv .val{font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--fg2);margin:4px 0 6px}
+.legend span:before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;background:var(--c);vertical-align:-1px}
+.src{font-size:11.5px;color:var(--fg2);margin-top:20px;padding-top:8px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.note{font-size:12px;color:var(--fg2);margin:6px 0 0}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:640px){.row{grid-template-columns:minmax(92px,36%) 1fr}h1{font-size:19px}}
+details{margin-top:6px;font-size:12px;color:var(--fg2)}
+summary{cursor:pointer;width:max-content}
+table.t{border-collapse:collapse;width:100%;font-size:12px;margin-top:6px;color:var(--fg)}
+table.t th,table.t td{padding:4px 6px;text-align:left;border-bottom:1px solid var(--line)}
+table.t th{color:var(--fg2);font-weight:600}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.colchart{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:6px;padding-top:6px}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.col i{display:block;width:100%;max-width:56px;border-radius:4px 4px 0 0;min-height:2px;transition:opacity .15s}
+.col b{font-size:12px;font-weight:600;margin-bottom:3px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.col span{font-size:11.5px;color:var(--fg2);margin-top:5px;white-space:nowrap}
+.col .s{font-size:11px;color:var(--fg2);margin:0 0 2px;font-weight:400}
+.avg{position:relative}
+.callout{border-left:3px solid var(--c1);padding:2px 0 2px 10px;margin:10px 0 0;font-size:13px}
+.callout.o{border-color:var(--c2)}
+
+:root{--c3:#1baf7a;--c4:#eda100}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c3:#199e70;--c4:#c98500}}
+:root[data-theme="dark"]{--c3:#199e70;--c4:#c98500}
+.stk{display:flex;flex-direction:column-reverse;gap:2px;width:100%;max-width:56px}
+.stk i{border-radius:2px;min-height:2px;width:100%}
+.stk i:last-child{border-radius:4px 4px 2px 2px}
+</style></head>
+<body><div class="wrap" role="figure" aria-label="Jan–Jul 2026 at a glance">
+<div class="kicker">BOOM Research · January–July 2026</div><h1>Jan–Jul 2026 at a glance</h1><p class="sub">AI is in three of every ten fact-checks; the Iran war, the West Bengal election and the CJP protests led the topics.</p>
+<div class="tiles"><div class="tile"><b>527</b><span>fact-checks</span></div><div class="tile"><b>30.7%</b><span>involved AI · 162 of 527</span></div><div class="tile"><b>47.1%</b><span>used older media · 248 of 527</span></div><div class="tile"><b>22.8%</b><span>reached Breakout Category 4+ · 120 of 527</span></div><div class="tile"><b>7.0%</b><span>media misreporting · 37 of 527</span></div><div class="tile"><b>34.5%</b><span>coded as harm potential · 182 of 527</span></div></div><h2>AI share of BOOM fact-checks </h2><div class="row"><div class="lab">2024<small>BOOM annual report</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.2319);background:var(--grey)" title="2024: 8.35%"></div><div class="val">8.35%</div></div></div></div><div class="row"><div class="lab">2025<small>219 of 1,067 · annual report</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.5694);background:var(--grey)" title="2025: 20.5%"></div><div class="val">20.5%</div></div></div></div><div class="row"><div class="lab">Jan–Jul 2026<small>162 of 527</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.8528);background:var(--c1)" title="Jan–Jul 2026: 30.7%"></div><div class="val">30.7%</div></div></div></div><details><summary>View as table</summary><table class="t"><tr><th class="">Period</th><th class="n">AI share</th><th class="n">Basis</th></tr><tr><td class="">2024</td><td class="n">8.35%</td><td class="n">BOOM 2025 annual report</td></tr><tr><td class="">2025</td><td class="n">20.5%</td><td class="n">219 of 1,067 (annual report)</td></tr><tr><td class="">Jan–Jul 2026</td><td class="n">30.7%</td><td class="n">162 of 527</td></tr></table></details><h2>Biggest topics </h2><p class="note" style="margin-top:0">Event clusters, Jan–Jul 2026. 372 of 527 fact-checks (70.6%) fell into a named cluster.</p><div class="row"><div class="lab">US-Israel-Iran war</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.9000);background:var(--c1)" title="US-Israel-Iran war: 81 &lt;i&gt;(15.4%)&lt;/i&gt;"></div><div class="val">81 <i>(15.4%)</i></div></div></div></div><div class="row"><div class="lab">West Bengal election</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.7333);background:var(--c1)" title="West Bengal election: 66 &lt;i&gt;(12.5%)&lt;/i&gt;"></div><div class="val">66 <i>(12.5%)</i></div></div></div></div><div class="row"><div class="lab">CJP protests (NEET)</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.4778);background:var(--c1)" title="CJP protests (NEET): 43 &lt;i&gt;(8.2%)&lt;/i&gt;"></div><div class="val">43 <i>(8.2%)</i></div></div></div></div><div class="row"><div class="lab">UGC rules protests</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1444);background:var(--c1)" title="UGC rules protests: 13 &lt;i&gt;(2.5%)&lt;/i&gt;"></div><div class="val">13 <i>(2.5%)</i></div></div></div></div><div class="row"><div class="lab">Iran unrest protests</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1333);background:var(--c1)" title="Iran unrest protests: 12 &lt;i&gt;(2.3%)&lt;/i&gt;"></div><div class="val">12 <i>(2.3%)</i></div></div></div></div><div class="row"><div class="lab">Noida workers protests</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.0778);background:var(--c1)" title="Noida workers protests: 7 &lt;i&gt;(1.3%)&lt;/i&gt;"></div><div class="val">7 <i>(1.3%)</i></div></div></div></div><details><summary>View as table</summary><table class="t"><tr><th class="">Cluster</th><th class="n">Fact-checks</th><th class="n">Share of 527</th></tr><tr><td class="">US-Israel-Iran war</td><td class="n">81</td><td class="n">15.4%</td></tr><tr><td class="">West Bengal election</td><td class="n">66</td><td class="n">12.5%</td></tr><tr><td class="">CJP protests (NEET)</td><td class="n">43</td><td class="n">8.2%</td></tr><tr><td class="">UGC rules protests</td><td class="n">13</td><td class="n">2.5%</td></tr><tr><td class="">Iran unrest protests</td><td class="n">12</td><td class="n">2.3%</td></tr><tr><td class="">Noida workers protests</td><td class="n">7</td><td class="n">1.3%</td></tr></table></details><h2>Most-targeted </h2><p class="note" style="margin-top:0">Primary target as coded: who the false claim was about or aimed at, which says nothing about who made it. The generic target “Social Media Users” (17) is left out, as are targets with fewer than 6 fact-checks.</p><div class="row"><div class="lab">Narendra Modi</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.7333);background:var(--c1)" title="Narendra Modi: 33 &lt;i&gt;(6.3%)&lt;/i&gt;"></div><div class="val">33 <i>(6.3%)</i></div></div></div></div><div class="row"><div class="lab">BJP (party/workers/leaders)</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.3111);background:var(--c1)" title="BJP (party/workers/leaders): 14 &lt;i&gt;(2.7%)&lt;/i&gt;"></div><div class="val">14 <i>(2.7%)</i></div></div></div></div><div class="row"><div class="lab">Delhi Police</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.2444);background:var(--c1)" title="Delhi Police: 11 &lt;i&gt;(2.1%)&lt;/i&gt;"></div><div class="val">11 <i>(2.1%)</i></div></div></div></div><div class="row"><div class="lab">Cockroach Janta Party (CJP)</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1778);background:var(--c1)" title="Cockroach Janta Party (CJP): 8 &lt;i&gt;(1.5%)&lt;/i&gt;"></div><div class="val">8 <i>(1.5%)</i></div></div></div></div><div class="row"><div class="lab">Iran</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1778);background:var(--c1)" title="Iran: 8 &lt;i&gt;(1.5%)&lt;/i&gt;"></div><div class="val">8 <i>(1.5%)</i></div></div></div></div><div class="row"><div class="lab">Yogi Adityanath</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1556);background:var(--c1)" title="Yogi Adityanath: 7 &lt;i&gt;(1.3%)&lt;/i&gt;"></div><div class="val">7 <i>(1.3%)</i></div></div></div></div><div class="row"><div class="lab">Donald Trump</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1333);background:var(--c1)" title="Donald Trump: 6 &lt;i&gt;(1.1%)&lt;/i&gt;"></div><div class="val">6 <i>(1.1%)</i></div></div></div></div><div class="row"><div class="lab">Gen Upendra Dwivedi</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1333);background:var(--c1)" title="Gen Upendra Dwivedi: 6 &lt;i&gt;(1.1%)&lt;/i&gt;"></div><div class="val">6 <i>(1.1%)</i></div></div></div></div><div class="row"><div class="lab">TMC (party/workers/leaders)</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1333);background:var(--c1)" title="TMC (party/workers/leaders): 6 &lt;i&gt;(1.1%)&lt;/i&gt;"></div><div class="val">6 <i>(1.1%)</i></div></div></div></div><details><summary>View as table</summary><table class="t"><tr><th class="">Primary target</th><th class="n">Fact-checks</th><th class="n">Share of 527</th></tr><tr><td class="">Narendra Modi</td><td class="n">33</td><td class="n">6.3%</td></tr><tr><td class="">BJP (party/workers/leaders)</td><td class="n">14</td><td class="n">2.7%</td></tr><tr><td class="">Delhi Police</td><td class="n">11</td><td class="n">2.1%</td></tr><tr><td class="">Cockroach Janta Party (CJP)</td><td class="n">8</td><td class="n">1.5%</td></tr><tr><td class="">Iran</td><td class="n">8</td><td class="n">1.5%</td></tr><tr><td class="">Yogi Adityanath</td><td class="n">7</td><td class="n">1.3%</td></tr><tr><td class="">Donald Trump</td><td class="n">6</td><td class="n">1.1%</td></tr><tr><td class="">Gen Upendra Dwivedi</td><td class="n">6</td><td class="n">1.1%</td></tr><tr><td class="">TMC (party/workers/leaders)</td><td class="n">6</td><td class="n">1.1%</td></tr></table></details>
+<p class="note">2024 and 2025 AI shares are from BOOM's 2025 annual report and may use different definitions.</p>
+<div class="src"><span>Source: BOOM fact-check database, 2 January–31 July 2026, 527 fact-checks</span><span>BOOM Research</span></div>
+</div><script>(function(){try{var m=location.search.match(/theme=(light|dark)/);if(m)document.documentElement.setAttribute('data-theme',m[1]);}catch(e){}
+function p(){try{parent.postMessage({boomIframeHeight:document.documentElement.scrollHeight},'*')}catch(e){}}
+addEventListener('load',p);addEventListener('resize',p);})();</script></body></html>

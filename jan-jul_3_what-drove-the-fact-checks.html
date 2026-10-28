@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What drove the fact-checks, Jan–Jul 2026</title><style>
+:root{--bg:#fcfcfb;--fg:#0b0b0b;--fg2:#52514e;--line:#e6e5e1;--tile:#ffffff;--c1:#2a78d6;--c2:#eb6834;--grey:#a9a8a2;
+--r1:#9ec5f4;--r2:#6da7ec;--r3:#3987e5;--r4:#256abf;--r5:#184f95;--r6:#0d366b;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a19;--fg:#f0efec;--fg2:#c3c2b7;--line:#34342f;--tile:#222221;--c1:#3987e5;--c2:#d95926;--grey:#6b6a65;
+--r1:#1c5cab;--r2:#256abf;--r3:#2a78d6;--r4:#5598e7;--r5:#86b6ef;--r6:#b7d3f6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a1a19;--fg:#f0efec;--fg2:#c3c2b7;--line:#34342f;--tile:#222221;--c1:#3987e5;--c2:#d95926;--grey:#6b6a65;
+--r1:#1c5cab;--r2:#256abf;--r3:#2a78d6;--r4:#5598e7;--r5:#86b6ef;--r6:#b7d3f6;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--fg);line-height:1.35;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 14px}
+.kicker{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2);font-weight:600}
+h1{font-size:22px;line-height:1.2;margin:4px 0 6px;font-weight:700}
+.sub{font-size:14px;color:var(--fg2);margin:0 0 14px}
+h2{font-size:13px;margin:22px 0 4px;font-weight:700}
+h2 small{font-weight:400;color:var(--fg2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px;margin:0 0 4px}
+.tile{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--tile)}
+.tile b{display:block;font-size:clamp(19px,5.4vw,26px);overflow-wrap:anywhere;line-height:1.1;font-weight:700;font-variant-numeric:tabular-nums}
+.tile span{display:block;font-size:12px;color:var(--fg2);margin-top:3px}
+.row{display:grid;grid-template-columns:minmax(110px,31%) 1fr;gap:10px;align-items:center;margin:5px 0;font-size:13px}
+.row .lab small{color:var(--fg2);font-size:11.5px;display:block}
+.trk{display:flex;align-items:center;min-width:0}
+.bw{flex:1;min-width:0;display:flex;align-items:center}
+.bar{height:14px;border-radius:0 4px 4px 0;min-width:2px;flex:none;transition:opacity .15s}
+.bar.thin{height:10px;margin:1.5px 0}
+.bar:hover,.seg:hover,.col:hover i{opacity:.78}
+.val{font-size:12.5px;margin-left:7px;white-space:nowrap;font-variant-numeric:tabular-nums;flex:none}
+.val i{font-style:normal;color:var(--fg2)}
+.pv{display:flex;align-items:center;height:13px}
+.pv .val{font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--fg2);margin:4px 0 6px}
+.legend span:before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;background:var(--c);vertical-align:-1px}
+.src{font-size:11.5px;color:var(--fg2);margin-top:20px;padding-top:8px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.note{font-size:12px;color:var(--fg2);margin:6px 0 0}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:640px){.row{grid-template-columns:minmax(92px,36%) 1fr}h1{font-size:19px}}
+details{margin-top:6px;font-size:12px;color:var(--fg2)}
+summary{cursor:pointer;width:max-content}
+table.t{border-collapse:collapse;width:100%;font-size:12px;margin-top:6px;color:var(--fg)}
+table.t th,table.t td{padding:4px 6px;text-align:left;border-bottom:1px solid var(--line)}
+table.t th{color:var(--fg2);font-weight:600}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.colchart{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:6px;padding-top:6px}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.col i{display:block;width:100%;max-width:56px;border-radius:4px 4px 0 0;min-height:2px;transition:opacity .15s}
+.col b{font-size:12px;font-weight:600;margin-bottom:3px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.col span{font-size:11.5px;color:var(--fg2);margin-top:5px;white-space:nowrap}
+.col .s{font-size:11px;color:var(--fg2);margin:0 0 2px;font-weight:400}
+.avg{position:relative}
+.callout{border-left:3px solid var(--c1);padding:2px 0 2px 10px;margin:10px 0 0;font-size:13px}
+.callout.o{border-color:var(--c2)}
+
+:root{--c3:#1baf7a;--c4:#eda100}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c3:#199e70;--c4:#c98500}}
+:root[data-theme="dark"]{--c3:#199e70;--c4:#c98500}
+.stk{display:flex;flex-direction:column-reverse;gap:2px;width:100%;max-width:56px}
+.stk i{border-radius:2px;min-height:2px;width:100%}
+.stk i:last-child{border-radius:4px 4px 2px 2px}
+</style></head>
+<body><div class="wrap" role="figure" aria-label="What drove the fact-checks, Jan–Jul 2026">
+<div class="kicker">BOOM Research · January–July 2026</div><h1>What drove the fact-checks, Jan–Jul 2026</h1><p class="sub">Three events shaped the period: the war in March, the Bengal election in April–May, the CJP protests in July.</p>
+<div class="tiles"><div class="tile"><b>81</b><span>war fact-checks, 15.4%</span></div><div class="tile"><b>66</b><span>Bengal election fact-checks</span></div><div class="tile"><b>82</b><span>communal fact-checks, 15.6%</span></div><div class="tile"><b>43</b><span>CJP (NEET) fact-checks in Jan–Jul</span></div></div><h2>Fact-checks per month, by narrative </h2><p class="note" style="margin-top:0">Each column is a month, split by narrative. 67 of March’s 86 fact-checks were on the war (78%).</p><div class="legend"><b style="color:var(--fg)">Narrative:</b><span style="--c:var(--c1)">US-Israel-Iran war</span><span style="--c:var(--c2)">West Bengal election</span><span style="--c:var(--c3)">CJP protests (NEET)</span><span style="--c:var(--grey)">Everything else</span></div><div class="colchart"><div class="col"><b>122</b><div class="stk" style="height:calc((100% - 44px) * 1.0000)"><i style="flex:122 1 0;background:var(--grey)" title="Jan · Everything else: 122"></i></div><span>Jan</span></div><div class="col"><b>61</b><div class="stk" style="height:calc((100% - 44px) * 0.5000)"><i style="flex:2 1 0;background:var(--c1)" title="Feb · US-Israel-Iran war: 2"></i><i style="flex:59 1 0;background:var(--grey)" title="Feb · Everything else: 59"></i></div><span>Feb</span></div><div class="col"><b>86</b><div class="stk" style="height:calc((100% - 44px) * 0.7049)"><i style="flex:67 1 0;background:var(--c1)" title="Mar · US-Israel-Iran war: 67"></i><i style="flex:2 1 0;background:var(--c2)" title="Mar · West Bengal election: 2"></i><i style="flex:17 1 0;background:var(--grey)" title="Mar · Everything else: 17"></i></div><span>Mar</span></div><div class="col"><b>76</b><div class="stk" style="height:calc((100% - 44px) * 0.6230)"><i style="flex:6 1 0;background:var(--c1)" title="Apr · US-Israel-Iran war: 6"></i><i style="flex:35 1 0;background:var(--c2)" title="Apr · West Bengal election: 35"></i><i style="flex:35 1 0;background:var(--grey)" title="Apr · Everything else: 35"></i></div><span>Apr</span></div><div class="col"><b>51</b><div class="stk" style="height:calc((100% - 44px) * 0.4180)"><i style="flex:29 1 0;background:var(--c2)" title="May · West Bengal election: 29"></i><i style="flex:2 1 0;background:var(--c3)" title="May · CJP protests (NEET): 2"></i><i style="flex:20 1 0;background:var(--grey)" title="May · Everything else: 20"></i></div><span>May</span></div><div class="col"><b>60</b><div class="stk" style="height:calc((100% - 44px) * 0.4918)"><i style="flex:5 1 0;background:var(--c1)" title="Jun · US-Israel-Iran war: 5"></i><i style="flex:7 1 0;background:var(--c3)" title="Jun · CJP protests (NEET): 7"></i><i style="flex:48 1 0;background:var(--grey)" title="Jun · Everything else: 48"></i></div><span>Jun</span></div><div class="col"><b>71</b><div class="stk" style="height:calc((100% - 44px) * 0.5820)"><i style="flex:1 1 0;background:var(--c1)" title="Jul · US-Israel-Iran war: 1"></i><i style="flex:34 1 0;background:var(--c3)" title="Jul · CJP protests (NEET): 34"></i><i style="flex:36 1 0;background:var(--grey)" title="Jul · Everything else: 36"></i></div><span>Jul</span></div></div><details><summary>View as table</summary><table class="t"><tr><th class="">Month</th><th class="n">War</th><th class="n">Bengal election</th><th class="n">CJP (NEET)</th><th class="n">Everything else</th><th class="n">Total</th></tr><tr><td class="">Jan</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">122</td><td class="n">122</td></tr><tr><td class="">Feb</td><td class="n">2</td><td class="n">0</td><td class="n">0</td><td class="n">59</td><td class="n">61</td></tr><tr><td class="">Mar</td><td class="n">67</td><td class="n">2</td><td class="n">0</td><td class="n">17</td><td class="n">86</td></tr><tr><td class="">Apr</td><td class="n">6</td><td class="n">35</td><td class="n">0</td><td class="n">35</td><td class="n">76</td></tr><tr><td class="">May</td><td class="n">0</td><td class="n">29</td><td class="n">2</td><td class="n">20</td><td class="n">51</td></tr><tr><td class="">Jun</td><td class="n">5</td><td class="n">0</td><td class="n">7</td><td class="n">48</td><td class="n">60</td></tr><tr><td class="">Jul</td><td class="n">1</td><td class="n">0</td><td class="n">34</td><td class="n">36</td><td class="n">71</td></tr></table></details><h2>How each narrative was made: AI or old footage </h2><p class="note" style="margin-top:0">AI and old footage can overlap, so the two shares need not add to 100%.</p><p class="note" style="margin-top:0">AI share of each narrative’s fact-checks</p><div class="row"><div class="lab">US-Israel-Iran war</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.5864);background:var(--c1)" title="US-Israel-Iran war: 46.9% &lt;i&gt;(38 of 81)&lt;/i&gt;"></div><div class="val">46.9% <i>(38 of 81)</i></div></div></div></div><div class="row"><div class="lab">West Bengal election</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.1515);background:var(--c2)" title="West Bengal election: 12.1% &lt;i&gt;(8 of 66)&lt;/i&gt;"></div><div class="val">12.1% <i>(8 of 66)</i></div></div></div></div><div class="row"><div class="lab">CJP protests (NEET)</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.4651);background:var(--c3)" title="CJP protests (NEET): 37.2% &lt;i&gt;(16 of 43)&lt;/i&gt;"></div><div class="val">37.2% <i>(16 of 43)</i></div></div></div></div><div class="row"><div class="lab">Communal claims</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.0152);background:var(--c4)" title="Communal claims: 1.2% &lt;i&gt;(1 of 82)&lt;/i&gt;"></div><div class="val">1.2% <i>(1 of 82)</i></div></div></div></div><p class="note">Old-footage share (media older than the event it was tied to)</p><div class="row"><div class="lab">US-Israel-Iran war</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.6481);background:var(--c1)" title="US-Israel-Iran war: 51.9% &lt;i&gt;(42 of 81)&lt;/i&gt;"></div><div class="val">51.9% <i>(42 of 81)</i></div></div></div></div><div class="row"><div class="lab">West Bengal election</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.7955);background:var(--c2)" title="West Bengal election: 63.6% &lt;i&gt;(42 of 66)&lt;/i&gt;"></div><div class="val">63.6% <i>(42 of 66)</i></div></div></div></div><div class="row"><div class="lab">CJP protests (NEET)</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.6105);background:var(--c3)" title="CJP protests (NEET): 48.8% &lt;i&gt;(21 of 43)&lt;/i&gt;"></div><div class="val">48.8% <i>(21 of 43)</i></div></div></div></div><div class="row"><div class="lab">Communal claims</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.5640);background:var(--c4)" title="Communal claims: 45.1% &lt;i&gt;(37 of 82)&lt;/i&gt;"></div><div class="val">45.1% <i>(37 of 82)</i></div></div></div></div><details><summary>View as table</summary><table class="t"><tr><th class="">Narrative</th><th class="n">Fact-checks</th><th class="n">AI</th><th class="n">AI share</th><th class="n">Old</th><th class="n">Old share</th></tr><tr><td class="">US-Israel-Iran war</td><td class="n">81</td><td class="n">38</td><td class="n">46.9%</td><td class="n">42</td><td class="n">51.9%</td></tr><tr><td class="">West Bengal election</td><td class="n">66</td><td class="n">8</td><td class="n">12.1%</td><td class="n">42</td><td class="n">63.6%</td></tr><tr><td class="">CJP protests (NEET)</td><td class="n">43</td><td class="n">16</td><td class="n">37.2%</td><td class="n">21</td><td class="n">48.8%</td></tr><tr><td class="">Communal claims</td><td class="n">82</td><td class="n">1</td><td class="n">1.2%</td><td class="n">37</td><td class="n">45.1%</td></tr></table></details><div class="callout"><b>Harm potential:</b> 59 of 82 communal fact-checks (72.0%) were coded as potentially harmful, the highest of any major theme. The “Bangladeshi Hindus under attack” narrative produced 14, all coded harmful.</div>
+<p class="note">Narratives are event clusters (keyword groupings of the topic field) plus the Communal theme. “Old” = media older than the event it was tied to, in any year.</p>
+<div class="src"><span>Source: BOOM fact-check database, 2 January–31 July 2026, 527 fact-checks</span><span>BOOM Research</span></div>
+</div><script>(function(){try{var m=location.search.match(/theme=(light|dark)/);if(m)document.documentElement.setAttribute('data-theme',m[1]);}catch(e){}
+function p(){try{parent.postMessage({boomIframeHeight:document.documentElement.scrollHeight},'*')}catch(e){}}
+addEventListener('load',p);addEventListener('resize',p);})();</script></body></html>

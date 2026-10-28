@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anatomy of AI, Aug–Oct 2026</title><style>
+:root{--bg:#fcfcfb;--fg:#0b0b0b;--fg2:#52514e;--line:#e6e5e1;--tile:#ffffff;--c1:#2a78d6;--c2:#eb6834;--grey:#a9a8a2;
+--r1:#9ec5f4;--r2:#6da7ec;--r3:#3987e5;--r4:#256abf;--r5:#184f95;--r6:#0d366b;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a19;--fg:#f0efec;--fg2:#c3c2b7;--line:#34342f;--tile:#222221;--c1:#3987e5;--c2:#d95926;--grey:#6b6a65;
+--r1:#1c5cab;--r2:#256abf;--r3:#2a78d6;--r4:#5598e7;--r5:#86b6ef;--r6:#b7d3f6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a1a19;--fg:#f0efec;--fg2:#c3c2b7;--line:#34342f;--tile:#222221;--c1:#3987e5;--c2:#d95926;--grey:#6b6a65;
+--r1:#1c5cab;--r2:#256abf;--r3:#2a78d6;--r4:#5598e7;--r5:#86b6ef;--r6:#b7d3f6;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--fg);line-height:1.35;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 14px}
+.kicker{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2);font-weight:600}
+h1{font-size:22px;line-height:1.2;margin:4px 0 6px;font-weight:700}
+.sub{font-size:14px;color:var(--fg2);margin:0 0 14px}
+h2{font-size:13px;margin:22px 0 4px;font-weight:700}
+h2 small{font-weight:400;color:var(--fg2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px;margin:0 0 4px}
+.tile{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--tile)}
+.tile b{display:block;font-size:clamp(19px,5.4vw,26px);overflow-wrap:anywhere;line-height:1.1;font-weight:700;font-variant-numeric:tabular-nums}
+.tile span{display:block;font-size:12px;color:var(--fg2);margin-top:3px}
+.row{display:grid;grid-template-columns:minmax(110px,31%) 1fr;gap:10px;align-items:center;margin:5px 0;font-size:13px}
+.row .lab small{color:var(--fg2);font-size:11.5px;display:block}
+.trk{display:flex;align-items:center;min-width:0}
+.bw{flex:1;min-width:0;display:flex;align-items:center}
+.bar{height:14px;border-radius:0 4px 4px 0;min-width:2px;flex:none;transition:opacity .15s}
+.bar.thin{height:10px;margin:1.5px 0}
+.bar:hover,.seg:hover,.col:hover i{opacity:.78}
+.val{font-size:12.5px;margin-left:7px;white-space:nowrap;font-variant-numeric:tabular-nums;flex:none}
+.val i{font-style:normal;color:var(--fg2)}
+.pv{display:flex;align-items:center;height:13px}
+.pv .val{font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--fg2);margin:4px 0 6px}
+.legend span:before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;background:var(--c);vertical-align:-1px}
+.src{font-size:11.5px;color:var(--fg2);margin-top:20px;padding-top:8px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.note{font-size:12px;color:var(--fg2);margin:6px 0 0}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:640px){.row{grid-template-columns:minmax(92px,36%) 1fr}h1{font-size:19px}}
+details{margin-top:6px;font-size:12px;color:var(--fg2)}
+summary{cursor:pointer;width:max-content}
+table.t{border-collapse:collapse;width:100%;font-size:12px;margin-top:6px;color:var(--fg)}
+table.t th,table.t td{padding:4px 6px;text-align:left;border-bottom:1px solid var(--line)}
+table.t th{color:var(--fg2);font-weight:600}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.colchart{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:6px;padding-top:6px}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.col i{display:block;width:100%;max-width:56px;border-radius:4px 4px 0 0;min-height:2px;transition:opacity .15s}
+.col b{font-size:12px;font-weight:600;margin-bottom:3px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.col span{font-size:11.5px;color:var(--fg2);margin-top:5px;white-space:nowrap}
+.col .s{font-size:11px;color:var(--fg2);margin:0 0 2px;font-weight:400}
+.avg{position:relative}
+.callout{border-left:3px solid var(--c1);padding:2px 0 2px 10px;margin:10px 0 0;font-size:13px}
+.callout.o{border-color:var(--c2)}
+
+:root{--c3:#1baf7a;--c4:#eda100}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c3:#199e70;--c4:#c98500}}
+:root[data-theme="dark"]{--c3:#199e70;--c4:#c98500}
+.stk{display:flex;flex-direction:column-reverse;gap:2px;width:100%;max-width:56px}
+.stk i{border-radius:2px;min-height:2px;width:100%}
+.stk i:last-child{border-radius:4px 4px 2px 2px}
+</style></head>
+<body><div class="wrap" role="figure" aria-label="Anatomy of AI, Aug–Oct 2026">
+<div class="kicker">BOOM Research · August–October 2026</div><h1>Anatomy of AI, Aug–Oct 2026</h1><p class="sub">61 of 154 fact-checks (39.6%) involved AI, up from 30.7% in January–July, and the kind of AI changed from fake voices to fake pictures.</p>
+<div class="tiles"><div class="tile"><b>61</b><span>AI fact-checks, 39.6% of 154</span></div><div class="tile"><b>50.8%</b><span>synthetic images + AI edits, 31 of 61 AI</span></div><div class="tile"><b>23.0%</b><span>deepfakes + voice clones, 14 of 61 AI</span></div><div class="tile"><b>13 of 31</b><span>newsroom-carried fakes were AI</span></div></div><h2>From fake voices to fake pictures <small>AI sub-type, share of AI fact-checks</small></h2><div class="legend"><span style="--c:var(--c1)">Jan–Jul 2026 (of 162)</span><span style="--c:var(--c2)">Aug–Oct 2026 (of 61)</span></div><div class="row"><div class="lab">Synthetic AI image</div><div class="trk" style="display:block"><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.5556);background:var(--c1)" title="Synthetic AI image: 22.2% &lt;i&gt;(36)&lt;/i&gt;"></div><div class="val">22.2% <i>(36)</i></div></div></div><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.8607);background:var(--c2)" title="Synthetic AI image: 34.4% &lt;i&gt;(21)&lt;/i&gt;"></div><div class="val">34.4% <i>(21)</i></div></div></div></div></div><div class="row"><div class="lab">Synthetic AI video</div><div class="trk" style="display:block"><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.6481);background:var(--c1)" title="Synthetic AI video: 25.9% &lt;i&gt;(42)&lt;/i&gt;"></div><div class="val">25.9% <i>(42)</i></div></div></div><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.4918);background:var(--c2)" title="Synthetic AI video: 19.7% &lt;i&gt;(12)&lt;/i&gt;"></div><div class="val">19.7% <i>(12)</i></div></div></div></div></div><div class="row"><div class="lab">AI-edited real media</div><div class="trk" style="display:block"><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.1543);background:var(--c1)" title="AI-edited real media: 6.2% &lt;i&gt;(10)&lt;/i&gt;"></div><div class="val">6.2% <i>(10)</i></div></div></div><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.4098);background:var(--c2)" title="AI-edited real media: 16.4% &lt;i&gt;(10)&lt;/i&gt;"></div><div class="val">16.4% <i>(10)</i></div></div></div></div></div><div class="row"><div class="lab">Voice clone</div><div class="trk" style="display:block"><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.5401);background:var(--c1)" title="Voice clone: 21.6% &lt;i&gt;(35)&lt;/i&gt;"></div><div class="val">21.6% <i>(35)</i></div></div></div><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.3279);background:var(--c2)" title="Voice clone: 13.1% &lt;i&gt;(8)&lt;/i&gt;"></div><div class="val">13.1% <i>(8)</i></div></div></div></div></div><div class="row"><div class="lab">Face-swap or lip-sync deepfake</div><div class="trk" style="display:block"><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.5247);background:var(--c1)" title="Face-swap or lip-sync deepfake: 21.0% &lt;i&gt;(34)&lt;/i&gt;"></div><div class="val">21.0% <i>(34)</i></div></div></div><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.2459);background:var(--c2)" title="Face-swap or lip-sync deepfake: 9.8% &lt;i&gt;(6)&lt;/i&gt;"></div><div class="val">9.8% <i>(6)</i></div></div></div></div></div><div class="row"><div class="lab">Other AI (letters, gazettes, AI text)</div><div class="trk" style="display:block"><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.0617);background:var(--c1)" title="Other AI (letters, gazettes, AI text): 2.5% &lt;i&gt;(4)&lt;/i&gt;"></div><div class="val">2.5% <i>(4)</i></div></div></div><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.1639);background:var(--c2)" title="Other AI (letters, gazettes, AI text): 6.6% &lt;i&gt;(4)&lt;/i&gt;"></div><div class="val">6.6% <i>(4)</i></div></div></div></div></div><div class="row"><div class="lab">Sub-type unclear</div><div class="trk" style="display:block"><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.0154);background:var(--c1)" title="Sub-type unclear: 0.6% &lt;i&gt;(1)&lt;/i&gt;"></div><div class="val">0.6% <i>(1)</i></div></div></div><div class="pv"><div class="bw"><div class="bar thin" style="width:calc((100% - 112px) * 0.0000);background:var(--c2)" title="Sub-type unclear: 0.0% &lt;i&gt;(0)&lt;/i&gt;"></div><div class="val">0.0% <i>(0)</i></div></div></div></div></div><div class="callout"><b>The mix flipped.</b> Synthetic images and AI edits of real media: 46 of 162 (28.4%) in Jan–Jul, 31 of 61 (50.8%) in Aug–Oct. Deepfakes and voice clones: 69 of 162 (42.6%) to 14 of 61 (23.0%). Military-leader deepfakes: 12 fact-checks to 1.</div><details><summary>View as table</summary><table class="t"><tr><th class="">AI sub-type</th><th class="n">Jan–Jul</th><th class="n">Share of 162</th><th class="n">Aug–Oct</th><th class="n">Share of 61</th></tr><tr><td class="">Synthetic AI image</td><td class="n">36</td><td class="n">22.2%</td><td class="n">21</td><td class="n">34.4%</td></tr><tr><td class="">Synthetic AI video</td><td class="n">42</td><td class="n">25.9%</td><td class="n">12</td><td class="n">19.7%</td></tr><tr><td class="">AI-edited real media</td><td class="n">10</td><td class="n">6.2%</td><td class="n">10</td><td class="n">16.4%</td></tr><tr><td class="">Voice clone</td><td class="n">35</td><td class="n">21.6%</td><td class="n">8</td><td class="n">13.1%</td></tr><tr><td class="">Face-swap or lip-sync deepfake</td><td class="n">34</td><td class="n">21.0%</td><td class="n">6</td><td class="n">9.8%</td></tr><tr><td class="">Other AI (letters, gazettes, AI text)</td><td class="n">4</td><td class="n">2.5%</td><td class="n">4</td><td class="n">6.6%</td></tr><tr><td class="">Sub-type unclear</td><td class="n">1</td><td class="n">0.6%</td><td class="n">0</td><td class="n">0.0%</td></tr></table></details><h2>AI reached newsrooms <small>share of newsroom-carried fakes that were AI</small></h2><div class="row"><div class="lab">Jan–Jul 2026</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.3153);background:var(--c1)" title="Jan–Jul 2026: 18.9% &lt;i&gt;(7/37)&lt;/i&gt;"></div><div class="val">18.9% <i>(7/37)</i></div></div></div></div><div class="row"><div class="lab">Aug–Oct 2026</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.6989);background:var(--c2)" title="Aug–Oct 2026: 41.9% &lt;i&gt;(13/31)&lt;/i&gt;"></div><div class="val">41.9% <i>(13/31)</i></div></div></div></div><details><summary>View as table</summary><table class="t"><tr><th class="">Measure</th><th class="n">Jan–Jul</th><th class="n">Aug–Oct</th></tr><tr><td class="">Newsroom-carried fakes that were AI</td><td class="n">7 of 37 (18.9%)</td><td class="n">13 of 31 (41.9%)</td></tr></table></details>
+<p class="note">AI sub-type was read from each article.</p>
+<div class="src"><span>Source: BOOM fact-check database, 3 August–23 October 2026, 154 fact-checks</span><span>BOOM Research</span></div>
+</div><script>(function(){try{var m=location.search.match(/theme=(light|dark)/);if(m)document.documentElement.setAttribute('data-theme',m[1]);}catch(e){}
+function p(){try{parent.postMessage({boomIframeHeight:document.documentElement.scrollHeight},'*')}catch(e){}}
+addEventListener('load',p);addEventListener('resize',p);})();</script></body></html>

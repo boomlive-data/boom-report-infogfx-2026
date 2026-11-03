@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Which news outlets carried false claims</title><style>
+:root{--bg:#fcfcfb;--fg:#0b0b0b;--fg2:#52514e;--line:#e6e5e1;--tile:#ffffff;--c1:#2a78d6;--c2:#eb6834;--grey:#a9a8a2;
+--r1:#9ec5f4;--r2:#6da7ec;--r3:#3987e5;--r4:#256abf;--r5:#184f95;--r6:#0d366b;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a19;--fg:#f0efec;--fg2:#c3c2b7;--line:#34342f;--tile:#222221;--c1:#3987e5;--c2:#d95926;--grey:#6b6a65;
+--r1:#1c5cab;--r2:#256abf;--r3:#2a78d6;--r4:#5598e7;--r5:#86b6ef;--r6:#b7d3f6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1a1a19;--fg:#f0efec;--fg2:#c3c2b7;--line:#34342f;--tile:#222221;--c1:#3987e5;--c2:#d95926;--grey:#6b6a65;
+--r1:#1c5cab;--r2:#256abf;--r3:#2a78d6;--r4:#5598e7;--r5:#86b6ef;--r6:#b7d3f6;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg)}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--fg);line-height:1.35;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:20px 16px 14px}
+.kicker{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2);font-weight:600}
+h1{font-size:22px;line-height:1.2;margin:4px 0 6px;font-weight:700}
+.sub{font-size:14px;color:var(--fg2);margin:0 0 14px}
+h2{font-size:13px;margin:22px 0 4px;font-weight:700}
+h2 small{font-weight:400;color:var(--fg2)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:10px;margin:0 0 4px}
+.tile{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--tile)}
+.tile b{display:block;font-size:clamp(19px,5.4vw,26px);overflow-wrap:anywhere;line-height:1.1;font-weight:700;font-variant-numeric:tabular-nums}
+.tile span{display:block;font-size:12px;color:var(--fg2);margin-top:3px}
+.row{display:grid;grid-template-columns:minmax(110px,31%) 1fr;gap:10px;align-items:center;margin:5px 0;font-size:13px}
+.row .lab small{color:var(--fg2);font-size:11.5px;display:block}
+.trk{display:flex;align-items:center;min-width:0}
+.bw{flex:1;min-width:0;display:flex;align-items:center}
+.bar{height:14px;border-radius:0 4px 4px 0;min-width:2px;flex:none;transition:opacity .15s}
+.bar.thin{height:10px;margin:1.5px 0}
+.bar:hover,.seg:hover,.col:hover i{opacity:.78}
+.val{font-size:12.5px;margin-left:7px;white-space:nowrap;font-variant-numeric:tabular-nums;flex:none}
+.val i{font-style:normal;color:var(--fg2)}
+.pv{display:flex;align-items:center;height:13px}
+.pv .val{font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12px;color:var(--fg2);margin:4px 0 6px}
+.legend span:before{content:'';display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;background:var(--c);vertical-align:-1px}
+.src{font-size:11.5px;color:var(--fg2);margin-top:20px;padding-top:8px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.note{font-size:12px;color:var(--fg2);margin:6px 0 0}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:640px){.row{grid-template-columns:minmax(92px,36%) 1fr}h1{font-size:19px}}
+details{margin-top:6px;font-size:12px;color:var(--fg2)}
+summary{cursor:pointer;width:max-content}
+table.t{border-collapse:collapse;width:100%;font-size:12px;margin-top:6px;color:var(--fg)}
+table.t th,table.t td{padding:4px 6px;text-align:left;border-bottom:1px solid var(--line)}
+table.t th{color:var(--fg2);font-weight:600}
+table.t td.n,table.t th.n{text-align:right;font-variant-numeric:tabular-nums}
+.colchart{display:flex;align-items:flex-end;gap:10px;height:150px;margin-top:6px;padding-top:6px}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.col i{display:block;width:100%;max-width:56px;border-radius:4px 4px 0 0;min-height:2px;transition:opacity .15s}
+.col b{font-size:12px;font-weight:600;margin-bottom:3px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.col span{font-size:11.5px;color:var(--fg2);margin-top:5px;white-space:nowrap}
+.col .s{font-size:11px;color:var(--fg2);margin:0 0 2px;font-weight:400}
+.avg{position:relative}
+.callout{border-left:3px solid var(--c1);padding:2px 0 2px 10px;margin:10px 0 0;font-size:13px}
+.callout.o{border-color:var(--c2)}
+
+:root{--c3:#1baf7a;--c4:#eda100}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c3:#199e70;--c4:#c98500}}
+:root[data-theme="dark"]{--c3:#199e70;--c4:#c98500}
+.stk{display:flex;flex-direction:column-reverse;gap:2px;width:100%;max-width:56px}
+.stk i{border-radius:2px;min-height:2px;width:100%}
+.stk i:last-child{border-radius:4px 4px 2px 2px}
+</style></head>
+<body><div class="wrap" role="figure" aria-label="Which news outlets carried false claims">
+<div class="kicker">BOOM Research · August–October 2026</div><h1>Which news outlets carried false claims</h1><p class="sub">Mainstream outlets themselves carried the false claim in 32 of 165 fact-checks (19.4%), against 7.0% in January–July.</p>
+<div class="tiles"><div class="tile"><b>19.4%</b><span>of fact-checks in August–October had a mainstream outlet carrying the false claim · 32 of 165</span></div><div class="tile"><b>7.0%</b><span>the same measure in January–July, for comparison · 37 of 527</span></div><div class="tile"><b>13 of 32</b><span>of those involved AI-made or AI-edited content</span></div></div><h2>Outlets named most often </h2><p class="note" style="margin-top:0">Fact-checks in which the outlet itself published or aired the false claim.</p><div class="row"><div class="lab">News18<small>7 involved AI</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.8889);background:var(--c2)" title="News18: 8"></div><div class="val">8</div></div></div></div><div class="row"><div class="lab">ABP News</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.6667);background:var(--c2)" title="ABP News: 6"></div><div class="val">6</div></div></div></div><div class="row"><div class="lab">NDTV<small>1 involved AI</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.4444);background:var(--c2)" title="NDTV: 4"></div><div class="val">4</div></div></div></div><div class="row"><div class="lab">Republic<small>1 involved AI</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.4444);background:var(--c2)" title="Republic: 4"></div><div class="val">4</div></div></div></div><div class="row"><div class="lab">Zee News<small>2 involved AI</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.4444);background:var(--c2)" title="Zee News: 4"></div><div class="val">4</div></div></div></div><div class="row"><div class="lab">Dainik Bhaskar</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.3333);background:var(--c2)" title="Dainik Bhaskar: 3"></div><div class="val">3</div></div></div></div><div class="row"><div class="lab">Hindustan Times<small>3 involved AI</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.3333);background:var(--c2)" title="Hindustan Times: 3"></div><div class="val">3</div></div></div></div><div class="row"><div class="lab">The Times of India<small>1 involved AI</small></div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.3333);background:var(--c2)" title="The Times of India: 3"></div><div class="val">3</div></div></div></div><div class="row"><div class="lab">Times Now</div><div class="trk"><div class="bw"><div class="bar" style="width:calc((100% - 112px) * 0.3333);background:var(--c2)" title="Times Now: 3"></div><div class="val">3</div></div></div></div><details><summary>View as table</summary><table class="t"><tr><th class="">Outlet</th><th class="n">Fact-checks naming it</th><th class="n">Of which involved AI</th></tr><tr><td class="">News18</td><td class="n">8</td><td class="n">7</td></tr><tr><td class="">ABP News</td><td class="n">6</td><td class="n">0</td></tr><tr><td class="">NDTV</td><td class="n">4</td><td class="n">1</td></tr><tr><td class="">Republic</td><td class="n">4</td><td class="n">1</td></tr><tr><td class="">Zee News</td><td class="n">4</td><td class="n">2</td></tr><tr><td class="">Dainik Bhaskar</td><td class="n">3</td><td class="n">0</td></tr><tr><td class="">Hindustan Times</td><td class="n">3</td><td class="n">3</td></tr><tr><td class="">The Times of India</td><td class="n">3</td><td class="n">1</td></tr><tr><td class="">Times Now</td><td class="n">3</td><td class="n">0</td></tr><tr><td class="">Gujarat Samachar</td><td class="n">2</td><td class="n">0</td></tr><tr><td class="">India Today</td><td class="n">2</td><td class="n">0</td></tr><tr><td class="">Ittefaq (Bangladesh)</td><td class="n">2</td><td class="n">0</td></tr><tr><td class="">Navbharat Times</td><td class="n">2</td><td class="n">0</td></tr><tr><td class="">NewsX Live</td><td class="n">2</td><td class="n">0</td></tr></table></details><p class="note">Also named in 2 fact-checks each: Gujarat Samachar, India Today, Ittefaq (Bangladesh), Navbharat Times, NewsX Live. 11 other outlets were named once.</p>
+<p class="note">Counts are of fact-checks, and the same claim is often fact-checked in more than one language. Regional-language and business channels of an outlet are counted with it (News18 includes News18 Hindi and Telugu, Zee includes Zee Telugu, NDTV includes NDTV Profit). Impersonated news brands are not included.</p>
+<div class="src"><span>Source: BOOM fact-check database, August–October 2026, 165 fact-checks</span><span>BOOM Research</span></div>
+</div><script>(function(){try{var m=location.search.match(/theme=(light|dark)/);if(m)document.documentElement.setAttribute('data-theme',m[1]);}catch(e){}
+function p(){try{parent.postMessage({boomIframeHeight:document.documentElement.scrollHeight},'*')}catch(e){}}
+addEventListener('load',p);addEventListener('resize',p);})();</script></body></html>
